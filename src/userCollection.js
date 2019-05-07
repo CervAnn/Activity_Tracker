@@ -9,10 +9,8 @@ class UserRepository {
     }
 
     findUserData(id) {
-      // console.log('hey', this.dataFilepath)
-      this.dataFilepath.forEach(user => {
+      this.dataFilepath.filter(user => {
         if (user.id === id) {
-          // console.log('woah', user)
           return user;
         }
       })
