@@ -1,14 +1,11 @@
-const userDataSample1 = require('../data/userDataSample1');
-
 class User {
   constructor(userData) {
-    this.userData = userData[0];
-    console.log(this.userData)
-
-  // }
-  // returnFirstName(name) {
-  //   // this.name = this.userData.name.split(" ")
+    this.userData = userData;
   }
+  returnFirstName(name) {
+   let userName = this.userData.name.split(" ")
+   return userName[0];
+}
 }
 
 module.exports = User;

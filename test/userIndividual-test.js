@@ -1,7 +1,15 @@
 const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/userIndividual');
-const userDataSample1 = require('../data/userDataSample1');
+
+const mockUserData =  {
+  "id": 1,
+  "name": "Nyasia Weber",
+  "address": "270 August Meadows, Maribelside SD 36129",
+  "email": "Jordane_Schultz@yahoo.com",
+  "strideLength": 4.7,
+  "dailyStepGoal": 8000
+}
 
 describe('User', function() {
 
@@ -14,9 +22,9 @@ describe('User', function() {
     expect(user).to.be.an.instanceof(User)
   })
 
-  it('should be an instance of ', function() {
-    const user = new User();
-    const userDataSample1 = require('../data/userDataSample1');
-  expect(user).to.be.an.instanceof(User)
+  it('should return first name of the name property of mockUserData', function() {
+    const user = new User(mockUserData);
+    user.returnFirstName();
+    expect(user.returnFirstName()).to.equal('Nyasia');
   })
 });
