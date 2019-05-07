@@ -34,12 +34,12 @@ main {
 }
 
 .widget {
-  height: 200px;
+  height: 180px;
 }
 
 .boxes:hover {
   height: 500px;
-  width: 200;
+  width: 180px;
 }
 
 .box1:hover {

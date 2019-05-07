@@ -2,10 +2,10 @@ class User {
   constructor(userData) {
     this.userData = userData;
   }
-  returnFirstName(name) {
+  returnFirstName() {
    let userName = this.userData.name.split(" ")
    return userName[0];
-}
+  }
 }
 
 module.exports = User;

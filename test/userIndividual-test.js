@@ -20,11 +20,11 @@ describe('User', function() {
   it('should be an instance of User', function() {
     const user = new User();
     expect(user).to.be.an.instanceof(User)
-  })
+  });
 
   it('should return first name of the name property of mockUserData', function() {
     const user = new User(mockUserData);
     user.returnFirstName();
     expect(user.returnFirstName()).to.equal('Nyasia');
-  })
+  });
 });
