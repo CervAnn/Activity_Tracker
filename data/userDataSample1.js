@@ -40,3 +40,5 @@ const userData = [
     "dailyStepGoal": 11000
   }
 ]
+
+module.exports = userData;
