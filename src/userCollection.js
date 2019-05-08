@@ -13,17 +13,9 @@ class UserRepository {
       if (user.id === id) {
         return user;
       }
+      return correctUser;
     })
-    return correctUser;
-  }
-
-  findUserData(id) {
-    this.dataFilepath.filter(user => {
-      if (user.id === id) {
-        return user;
-      }
-    })
-  }
+  } 
 
   averageStepGoal() {
   let userSteps = this.dataFilepath.map(user => {
