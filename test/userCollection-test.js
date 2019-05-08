@@ -14,11 +14,6 @@ describe('UserRespository', function() {
       const userRepo1 = new UserRepository('../data/userDataSample1');
       expect(userRepo1).to.be.an.instanceof(UserRepository)
     })
-  
-    // it('should be an instance of ', function() {
-    //   const userRepo1 = new UserRepository();
-    // expect(userRepo1).to.be.an.instanceof(UserRepository)
-    // })
 
     it('should return user data based on id', function() {
       const userRepo1 = new UserRepository('../data/userDataSample1');
@@ -31,5 +26,10 @@ describe('UserRespository', function() {
         "strideLength": 4.7,
         "dailyStepGoal": 8000
       })
+    })
+
+    it('should find and return the state most users are from', function() {
+      const userRepo1 = new UserRepository('../data/userDataSample1');
+      expect(userRepo1.findMostState()).to.equal('SD')
     })
   });
