@@ -1,10 +1,9 @@
-import $ from 'jquery';
-import userIndividual from './userIndividual';
-// import './css/normalize.css';
-// import './css/main.css';
+$(document).ready(() => {
+  const $box = $('.box4');
 
-const $boxes = $(".boxes");
+  $box.hover(function() {
+    $('h2').toggleClass('hidden');
+  });
+})
 
-$(".boxes").mouseover(function() {
-  $(".chart-text").removeClass("hidden");
-});
+

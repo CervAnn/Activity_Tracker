@@ -19,15 +19,15 @@ class UserRepository {
 
   averageStepGoal() {
   let userSteps = this.dataFilepath.map(user => {
-      return user.dailyStepGoal
-    });
+    return user.dailyStepGoal
+  });
 
   let totalSteps = userSteps.reduce((accum, curVal) => accum + curVal);
     return totalSteps / userSteps.length;
   }
 
-    findMostState() {
-  var states = this.dataFilepath.map(user => {
+  findMostState() {
+    var states = this.dataFilepath.map(user => {
     return user.address.split(' ')[user.address.split(' ').length - 2];
   });
   var stateCount = states.reduce((acc, state) => {
@@ -42,6 +42,8 @@ class UserRepository {
   stateCounts.sort(function(a, b) {
     return b - a;
   });
+  // stateCounts = Math.max(...stateCounts)
+  console.log('hey girl', stateCounts)
   for (var state in stateCount) {
     if (stateCount[state] === stateCounts[0]) {
       return state
