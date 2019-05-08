@@ -24,5 +24,9 @@ describe('UserRespository', function() {
       const userRepo1 = new UserRepository('../data/userDataSample1');
     expect(userRepo1.averageStepGoal()).to.equal(8400);
     })
-
+  
+    it('should find and return the state most users are from', function() {
+      const userRepo1 = new UserRepository('../data/userDataSample1');
+    expect(userRepo1.findMostState()).to.equal('SD')
+    })
   });
