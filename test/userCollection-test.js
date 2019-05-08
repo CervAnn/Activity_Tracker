@@ -15,8 +15,14 @@ describe('UserRespository', function() {
     expect(userRepo1).to.be.an.instanceof(UserRepository)
     })
 
-    it('should return User data based on id', function() {
+    it('should return User data based on User ID', function() {
       const userRepo1 = new UserRepository('../data/userDataSample1');
     expect(userRepo1.findUserData(4)).to.equal(userRepo1[3]);
     })
+
+    it('should return the average step goal among Users', function() {
+      const userRepo1 = new UserRepository('../data/userDataSample1');
+    expect(userRepo1.averageStepGoal()).to.equal(8400);
+    })
+
   });
