@@ -1,11 +1,14 @@
 class User {
   constructor(userData) {
-    this.userData = userData;
+    this.userData = userData[0];
   }
   returnFirstName() {
+    console.log(this.userData)
    let userName = this.userData.name.split(" ")
    return userName[0];
   }
 }
 
-module.exports = User;
+if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
+  module.exports = User;
+}
