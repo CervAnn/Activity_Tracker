@@ -21,6 +21,9 @@ class User {
       return `Your daily step goal is ${averageStepGoal - this.userData.dailyStepGoal} less than the average user.`;
     }
   }
+  getAverageFluids() {
+    
+  }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {

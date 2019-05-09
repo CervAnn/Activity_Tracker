@@ -3,6 +3,7 @@ const expect = chai.expect;
 const User = require('../src/userIndividual');
 const userData = require('../data/UserSample');
 const longUserData = require('../data/userDataSample1');
+const hydrationSample = require('../data/hydrationSample');
 
 describe('User', function() {
 
@@ -25,4 +26,9 @@ describe('User', function() {
     const user = new User(userData);
     expect(user.compareStepGoal(longUserData)).to.equal(`Your daily step goal is ${userData.dailyStepGoal} more than the average user.`)
   });
+
+  it('should calculate the average amount of fluids they consume per day', function() {
+    const user = new User(userData);
+    expect(user.getAverageFluids().to.equal())
+  })
 });
