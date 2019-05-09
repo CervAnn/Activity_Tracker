@@ -29,8 +29,7 @@ $(document).ready(() => {
     $('.info-card').toggleClass('hidden');
     $('.info-card').toggleClass('blue');
     if ($('.info-card').hasClass( "yellow" )) {
-      $('.info-card').removeClass('yellow');
-      $('.info-card').addClass('blue');
+      $('.info-card').removeClass('yellow') && $('.info-card').addClass('blue');
     }
     $('.info-card').toggleClass('info-card-stretch')
     $('main').toggleClass('side-main');
