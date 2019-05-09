@@ -41,4 +41,6 @@ const userData = [
   }
 ]
 
-module.exports = userData;
+if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
+  module.exports = userData;
+}
