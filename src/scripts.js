@@ -11,18 +11,48 @@ $(document).ready(() => {
     $('.p1').append('Name: ' + user.userData.name);
     $('.p2').append('Address: ' + user.userData.address);
     $('.p3').append('Email: ' + user.userData.email)
-    $('main').toggleClass('grid-side');
+    $('main').toggleClass('side-main');
     $('main').toggleClass('grid-main');
   })
 
   $('.box1').click(function() {
     $('.boxes').toggleClass('side')
-    $('.info-card').removeClass('hidden');
-    $('.info-card').addClass('yellow');
-    $('.info-card').addClass('info-card-stretch')
+    $('.info-card').toggleClass('hidden');
+    $('.info-card').toggleClass('yellow');
+    $('.info-card').toggleClass('info-card-stretch')
     $('main').toggleClass('side-main');
     $('main').toggleClass('grid-main');
-    $('section').toggleClass('info-container');
+  })
+
+  $('.box2').click(function() {
+    $('.boxes').toggleClass('side')
+    $('.info-card').toggleClass('hidden');
+    $('.info-card').toggleClass('blue');
+    if ($('.info-card').hasClass( "yellow" )) {
+      $('.info-card').removeClass('yellow');
+      $('.info-card').addClass('blue');
+    }
+    $('.info-card').toggleClass('info-card-stretch')
+    $('main').toggleClass('side-main');
+    $('main').toggleClass('grid-main');
+  })
+
+  $('.box3').click(function() {
+    $('.boxes').toggleClass('side')
+    $('.info-card').toggleClass('hidden');
+    $('.info-card').toggleClass('lavendar');
+    $('.info-card').toggleClass('info-card-stretch')
+    $('main').toggleClass('side-main');
+    $('main').toggleClass('grid-main');
+  })
+  
+  $('.box4').click(function() {
+    $('.boxes').toggleClass('side')
+    $('.info-card').toggleClass('hidden');
+    $('.info-card').toggleClass('rose');
+    $('.info-card').toggleClass('info-card-stretch')
+    $('main').toggleClass('side-main');
+    $('main').toggleClass('grid-main');
   })
 
   // $box.hover(function() {
