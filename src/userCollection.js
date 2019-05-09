@@ -35,7 +35,6 @@ class UserRepository {
   }
 
   countStates(states) {
-    console.log('states', states);
     var statesAndCounts = states.reduce((acc, state) => {
       if (!acc.hasOwnProperty(state)) {
         acc[state] = 0;
@@ -44,7 +43,6 @@ class UserRepository {
       }
       return acc;
     }, {});
-    console.log('object', statesAndCounts)
     this.findMostState(statesAndCounts)
     return statesAndCounts;
   }
@@ -67,7 +65,6 @@ class UserRepository {
       return b - a;
     });
     // stateCounts = Math.max(...stateCounts)
-    console.log('hey girl', stateCounts)
     for (var state in stateObject) {
       if (stateObject[state] === stateCounts[0]) {
         return state

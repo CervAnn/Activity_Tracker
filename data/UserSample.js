@@ -1,4 +1,4 @@
-const UserSample = 
+const userSample = 
   {
     "id": 1,
     "name": "Nyasia Weber",
@@ -9,5 +9,5 @@ const UserSample =
   }
 
   if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
-  module.exports = UserSample;
+  module.exports = userSample;
 }
