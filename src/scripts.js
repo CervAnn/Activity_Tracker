@@ -1,5 +1,4 @@
 $(document).ready(() => {
-  const $userPhoto = $('.user-photo');
   const $infoCard = $('.info-card');
   const $box1 = $('.box1');
   const $box2 = $('.box2');
@@ -7,11 +6,23 @@ $(document).ready(() => {
   const $box4 = $('.box4');
   const user = new User(userData);
 
-  $userPhoto.click(function() {
+  $('.user-photo').click(function() {
     $('.user-info').toggleClass('hidden')
     $('.p1').append('Name: ' + user.userData.name);
     $('.p2').append('Address: ' + user.userData.address);
     $('.p3').append('Email: ' + user.userData.email)
+    $('main').toggleClass('grid-side');
+    $('main').toggleClass('grid-main');
+  })
+
+  $('.box1').click(function() {
+    $('.boxes').toggleClass('side')
+    $('.info-card').removeClass('hidden');
+    $('.info-card').addClass('yellow');
+    $('.info-card').addClass('info-card-stretch')
+    $('main').toggleClass('side-main');
+    $('main').toggleClass('grid-main');
+    $('section').toggleClass('info-container');
   })
 
   // $box.hover(function() {
@@ -19,6 +30,8 @@ $(document).ready(() => {
   // });
 
 })
+
+// !!separate boxes into big section, have section for infobox to grid
 
 // select each widget 
 // add event listeners to widgets
