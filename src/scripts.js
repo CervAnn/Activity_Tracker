@@ -1,57 +1,100 @@
 $(document).ready(() => {
-  const $infoCard = $('.info-card');
-  const $box1 = $('.box1');
-  const $box2 = $('.box2');
-  const $box3 = $('.box3');
-  const $box4 = $('.box4');
   const user = new User(userData);
+
+  $(document).ready(function() {
+    $('.user-name').text(user.returnFirstName(userData))
+  })
 
   $('.user-photo').click(function() {
     $('.user-info').toggleClass('hidden')
-    $('.p1').append('Name: ' + user.userData.name);
-    $('.p2').append('Address: ' + user.userData.address);
-    $('.p3').append('Email: ' + user.userData.email)
+    $('.p1').text('Name: ' + user.userData.name);
+    $('.p2').text('Address: ' + user.userData.address);
+    $('.p3').text('Email: ' + user.userData.email)
     $('main').toggleClass('side-main');
     $('main').toggleClass('grid-main');
   })
 
   $('.box1').click(function() {
-    $('.boxes').toggleClass('side')
-    $('.info-card').toggleClass('hidden');
-    $('.info-card').toggleClass('yellow');
-    $('.info-card').toggleClass('info-card-stretch')
-    $('main').toggleClass('side-main');
-    $('main').toggleClass('grid-main');
+    $('.boxes').addClass('hidden')
+    $('.info-card').removeClass('hidden');
+    $('.info-card').addClass('yellow');
+    $('.info-card').addClass('info-card-stretch')
+    $('main').addClass('side-main');
+    $('main').removeClass('grid-main');
+    $('.yellow-close').removeClass('hidden');
+    $('.info-text').text(`Hello, ${user.returnFirstName(userData)}!`);
+    $('.info-text-2').text(`${user.compareStepGoal(userData)}`);
+  })
+
+  $('.yellow-close').click(function() {
+    $('.boxes').removeClass('hidden')
+    $('.info-card').addClass('hidden');
+    $('.info-card').removeClass('yellow');
+    $('.info-card').removeClass('info-card-stretch')
+    $('main').removeClass('side-main');
+    $('main').addClass('grid-main');
+    $('.yellow-close').addClass('hidden');
+
   })
 
   $('.box2').click(function() {
-    $('.boxes').toggleClass('side')
-    $('.info-card').toggleClass('hidden');
-    $('.info-card').toggleClass('blue');
-    if ($('.info-card').hasClass( "yellow" )) {
-      $('.info-card').removeClass('yellow') && $('.info-card').addClass('blue');
-    }
-    $('.info-card').toggleClass('info-card-stretch')
-    $('main').toggleClass('side-main');
-    $('main').toggleClass('grid-main');
+    $('.boxes').addClass('hidden')
+    $('.info-card').removeClass('hidden');
+    $('.info-card').addClass('blue');
+    $('.info-card').addClass('info-card-stretch')
+    $('main').addClass('side-main');
+    $('main').removeClass('grid-main');
+    $('.blue-close').removeClass('hidden');
+  })
+
+  $('.blue-close').click(function() {
+    $('.boxes').removeClass('hidden')
+    $('.info-card').addClass('hidden');
+    $('.info-card').removeClass('blue');
+    $('.info-card').removeClass('info-card-stretch')
+    $('main').removeClass('side-main');
+    $('main').addClass('grid-main');
+    $('.blue-close').addClass('hidden');
   })
 
   $('.box3').click(function() {
-    $('.boxes').toggleClass('side')
-    $('.info-card').toggleClass('hidden');
-    $('.info-card').toggleClass('lavendar');
-    $('.info-card').toggleClass('info-card-stretch')
-    $('main').toggleClass('side-main');
-    $('main').toggleClass('grid-main');
+    $('.boxes').addClass('hidden')
+    $('.info-card').removeClass('hidden');
+    $('.info-card').addClass('lavendar');
+    $('.info-card').addClass('info-card-stretch')
+    $('main').addClass('side-main');
+    $('main').removeClass('grid-main');
+    $('.lavendar-close').removeClass('hidden');
+  })
+
+  $('.lavendar-close').click(function() {
+    $('.boxes').removeClass('hidden')
+    $('.info-card').addClass('hidden');
+    $('.info-card').removeClass('lavendar');
+    $('.info-card').removeClass('info-card-stretch')
+    $('main').removeClass('side-main');
+    $('main').addClass('grid-main');
+    $('.lavendar-close').addClass('hidden');
   })
   
   $('.box4').click(function() {
-    $('.boxes').toggleClass('side')
-    $('.info-card').toggleClass('hidden');
-    $('.info-card').toggleClass('rose');
-    $('.info-card').toggleClass('info-card-stretch')
-    $('main').toggleClass('side-main');
-    $('main').toggleClass('grid-main');
+    $('.boxes').addClass('hidden')
+    $('.info-card').removeClass('hidden');
+    $('.info-card').addClass('rose');
+    $('.info-card').addClass('info-card-stretch')
+    $('main').addClass('side-main');
+    $('main').removeClass('grid-main');
+    $('.rose-close').removeClass('hidden');
+  })
+
+  $('.rose-close').click(function() {
+    $('.boxes').removeClass('hidden')
+    $('.info-card').addClass('hidden');
+    $('.info-card').removeClass('rose');
+    $('.info-card').removeClass('info-card-stretch')
+    $('main').removeClass('side-main');
+    $('main').addClass('grid-main');
+    $('.rose-close').addClass('hidden');
   })
 
   // $box.hover(function() {

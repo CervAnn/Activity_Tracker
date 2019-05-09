@@ -1,11 +1,13 @@
 /*colors:
 purple: #ab84fc;
 lavendar: #e9e1f8;
-rose: #fc84a6;
+red: #fc84a6;
 peach: #fdb8af;
 gray: #f5f5f5;
 dark gray: #d2d2d2;
-green: #D6F7C4;
+yellow: #FFF4C2;
+rose: #EFC2E3;
+blue: #C5EAFB;
 */
 
 body {
@@ -85,11 +87,23 @@ main{
   width: 69%;
 }
 
+.info-text {
+  padding: 10px;
+}
+
 .widget {
   height: 180px;
 }
 
 .widget:hover {
+  cursor: pointer;
+}
+
+.close {
+  height: 100px;
+}
+
+.close:hover {
   cursor: pointer;
 }
 

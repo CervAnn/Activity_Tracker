@@ -1,15 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/userIndividual');
-
-const mockUserData =  {
-  "id": 1,
-  "name": "Nyasia Weber",
-  "address": "270 August Meadows, Maribelside SD 36129",
-  "email": "Jordane_Schultz@yahoo.com",
-  "strideLength": 4.7,
-  "dailyStepGoal": 8000
-}
+const userData = require('../data/UserSample');
+const longUserData = require('../data/userDataSample1');
 
 describe('User', function() {
 
@@ -18,13 +11,18 @@ describe('User', function() {
   });
 
   it('should be an instance of User', function() {
-    const user = new User();
+    const user = new User(userData);
     expect(user).to.be.an.instanceof(User)
   });
 
   it('should return first name of the name property of mockUserData', function() {
-    const user = new User(mockUserData);
+    const user = new User(userData);
     user.returnFirstName();
     expect(user.returnFirstName()).to.equal('Nyasia');
+  });
+
+  it('should compare individual step goal to all user step goals', function() {
+    const user = new User(userData);
+    expect(user.compareStepGoal(longUserData)).to.equal(`Your daily step goal is ${userData.dailyStepGoal} more than the average user.`)
   });
 });
