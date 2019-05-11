@@ -22,12 +22,36 @@ describe('UserRespository', function() {
 
   it('should return the average step goal among Users', function() {
     const userRepo1 = new UserRepository('../data/userDataSample1');
-  expect(userRepo1.averageStepGoal()).to.equal(8400);
+  expect(userRepo1.averageStepGoal()).to.equal(7160);
   })
 
   it('should return an array of states', function() {
     const userRepo1 = new UserRepository('../data/userDataSample1');
-    expect(userRepo1.isolateStates()).to.deep.equal(['SD', 'SD', 'OH', 'AK', 'MT'])
+    expect(userRepo1.isolateStates()).to.deep.equal(['SD',
+  'SD',
+  'OH',
+  'AK',
+  'MT',
+  'NE',
+  'PA',
+  'HI',
+  'SC',
+  'TX',
+  'MO',
+  'AR',
+  'TX',
+  'RI',
+  'IA',
+  'AL',
+  'MT',
+  'WA',
+  'IL',
+  'VT',
+  'NH',
+  'KY',
+  'FL',
+  'NM',
+  'CA'])
   })
 
   it('should count how many states there are', function() {

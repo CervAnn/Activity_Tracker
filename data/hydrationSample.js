@@ -51,7 +51,10 @@ const hydrationData = [
         "numOunces": 73
       }
     ]
+  }
+]
 
-if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = hydrationData;
 }

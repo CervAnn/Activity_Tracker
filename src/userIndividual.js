@@ -1,6 +1,7 @@
 class User {
   constructor(userData) {
-    this.userData = userData[Math.floor(Math.random()*userData.length)]
+    this.userData = userData[0]
+    // this.userData = userData[Math.floor(Math.random()*userData.length)]
   }
 
   returnFirstName() {
@@ -22,7 +23,7 @@ class User {
     }
   }
   getAverageFluids() {
-    
+    console.log('feafe', this.userData.id)
   }
 }
 
