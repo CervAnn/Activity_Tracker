@@ -1,8 +1,18 @@
 $(document).ready(() => {
-  const user = new User(userData);
+  const id = getRandomId();
+  const user = new User(userData, id);
+  var today = new Date();
+  const dd = today.getDate();
+  const mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
+  var today = dd + '/' + mm + '/' + yyyy;
+
+  function getRandomId() {
+    return Math.floor(Math.random() * (50 - 1) + 1);
+  }
 
   $(document).ready(function() {
-    $('.user-name').text(user.returnFirstName(userData))
+    $('.user-name').text(user.returnFirstName(id))
   })
 
   $('.user-photo').click(function() {
@@ -12,7 +22,7 @@ $(document).ready(() => {
     $('.p3').text('Email: ' + user.userData.email)
     $('main').toggleClass('side-main');
     $('main').toggleClass('grid-main');
-  })
+  });
 
   $('.box1').click(function() {
     $('.boxes').addClass('hidden')
@@ -22,9 +32,9 @@ $(document).ready(() => {
     $('main').addClass('side-main');
     $('main').removeClass('grid-main');
     $('.yellow-close').removeClass('hidden');
-    $('.info-text').text(`Hello, ${user.returnFirstName(userData)}!`);
-    $('.info-text-2').text(`${user.compareStepGoal(userData)}`);
-  })
+    $('h3').text('Hello ' + user.returnFirstName() + '!');
+    $('.info-text1').text(user.compareStepGoal(userData));
+  });
 
   $('.yellow-close').click(function() {
     $('.boxes').removeClass('hidden')
@@ -35,23 +45,28 @@ $(document).ready(() => {
     $('main').addClass('grid-main');
     $('.yellow-close').addClass('hidden');
 
-  })
+  });
 
   $('.box2').click(function() {
     $('.boxes').addClass('hidden')
-    $('.info-card').removeClass('hidden');
-    $('.info-card').addClass('blue');
-    $('.info-card').addClass('info-card-stretch')
+    $('.info-card2').removeClass('hidden');
+    $('.info-card2').addClass('blue');
+    $('.info-card2').addClass('info-card-stretch')
     $('main').addClass('side-main');
     $('main').removeClass('grid-main');
     $('.blue-close').removeClass('hidden');
-  })
+    $('h3').text('Hello ' + user.returnFirstName(1) + '!');
+    $('.info-text-2a').text('You have consumed ' + `${user.getFluidsOfDay(hydrationData, id, today)}` + ' ounces of fluids today.');
+    $('.info-text-2b').text('You have consumed the following amounts of fluid this week:')
+    $('.info-text-2c').html(user.parseFluidsOfWeek(user.getFluidsOfWeek(hydrationData, id, today)))
+
+  });
 
   $('.blue-close').click(function() {
     $('.boxes').removeClass('hidden')
-    $('.info-card').addClass('hidden');
-    $('.info-card').removeClass('blue');
-    $('.info-card').removeClass('info-card-stretch')
+    $('.info-card2').addClass('hidden');
+    $('.info-card2').removeClass('blue');
+    $('.info-card2').removeClass('info-card-stretch')
     $('main').removeClass('side-main');
     $('main').addClass('grid-main');
     $('.blue-close').addClass('hidden');
@@ -59,19 +74,21 @@ $(document).ready(() => {
 
   $('.box3').click(function() {
     $('.boxes').addClass('hidden')
-    $('.info-card').removeClass('hidden');
-    $('.info-card').addClass('lavendar');
-    $('.info-card').addClass('info-card-stretch')
+    $('.info-card3').removeClass('hidden');
+    $('.info-card3').addClass('lavendar');
+    $('.info-card3').addClass('info-card-stretch')
     $('main').addClass('side-main');
     $('main').removeClass('grid-main');
     $('.lavendar-close').removeClass('hidden');
+    $('h3').text('Hello ' + `${user.returnFirstName(1)}` + '!');
+
   })
 
   $('.lavendar-close').click(function() {
     $('.boxes').removeClass('hidden')
-    $('.info-card').addClass('hidden');
-    $('.info-card').removeClass('lavendar');
-    $('.info-card').removeClass('info-card-stretch')
+    $('.info-card3').addClass('hidden');
+    $('.info-card3').removeClass('lavendar');
+    $('.info-card3').removeClass('info-card-stretch')
     $('main').removeClass('side-main');
     $('main').addClass('grid-main');
     $('.lavendar-close').addClass('hidden');
@@ -79,19 +96,21 @@ $(document).ready(() => {
   
   $('.box4').click(function() {
     $('.boxes').addClass('hidden')
-    $('.info-card').removeClass('hidden');
-    $('.info-card').addClass('rose');
-    $('.info-card').addClass('info-card-stretch')
+    $('.info-card4').removeClass('hidden');
+    $('.info-card4').addClass('rose');
+    $('.info-card4').addClass('info-card-stretch')
     $('main').addClass('side-main');
     $('main').removeClass('grid-main');
     $('.rose-close').removeClass('hidden');
+    $('h3').text('Hello ' + `${user.returnFirstName(1)}` + '!');
+
   })
 
   $('.rose-close').click(function() {
     $('.boxes').removeClass('hidden')
-    $('.info-card').addClass('hidden');
-    $('.info-card').removeClass('rose');
-    $('.info-card').removeClass('info-card-stretch')
+    $('.info-card4').addClass('hidden');
+    $('.info-card4').removeClass('rose');
+    $('.info-card4').removeClass('info-card-stretch')
     $('main').removeClass('side-main');
     $('main').addClass('grid-main');
     $('.rose-close').addClass('hidden');
