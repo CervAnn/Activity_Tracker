@@ -5,7 +5,6 @@ class User {
   }
 
   returnFirstName(id) {
-    let userId = id - 1;
    let userName = this.userData[id - 1].name.split(" ");
    return userName[0];
   }
@@ -49,7 +48,7 @@ class User {
     const fluidWeek = fluidData.reduce((acc, obj, index, array) => {
       const theIndex = array.indexOf(fluidObject);
       const newArray = fluidData.slice(theIndex, (theIndex + 7))
-      const ourObject = newArray.reduce((acc, obj, index, array) => {
+      const ourObject = newArray.reduce((acc, obj) => {
         acc[obj.date] = obj.numOunces;
         return acc;
       }, {})
