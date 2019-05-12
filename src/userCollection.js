@@ -8,14 +8,14 @@ class UserRepository {
     this.dataFilepath = require(dataFilepath);
   }
 
-  findUserData(id) {
-    var correctUser = this.dataFilepath.find(user => {
-      if (user.id === id) {
-        return user;
-      }
-      return correctUser;
-    })
-  } 
+  // findUserData(id) {
+  //   var correctUser = this.dataFilepath.find(user => {
+  //     if (user.id === id) {
+  //       return user;
+  //     }
+  //     return correctUser;
+  //   })
+  // } 
 
   averageStepGoal() {
   let userSteps = this.dataFilepath.map(user => {
