@@ -37,6 +37,26 @@ class User {
     }, 0)
     return Math.floor(averageOunces / numOunces.length);
   }
+
+  getFluidsOfDay(data, id, date) {
+    const fluidObject = data[id - 1].hydrationData.find(obj => obj.date === date);
+    return fluidObject.numOunces;
+  }
+
+  getFluidsOfWeek(data, id, date) {
+    const fluidData = data[id - 1].hydrationData;
+    const fluidObject = fluidData.find(obj => obj.date === date);
+    const fluidWeek = fluidData.reduce((acc, obj, index, array) => {
+      const theIndex = array.indexOf(fluidObject);
+      const newArray = fluidData.slice(theIndex, (theIndex + 7))
+      const ourObject = newArray.reduce((acc, obj, index, array) => {
+        acc[obj.date] = obj.numOunces;
+        return acc;
+      }, {})
+      return ourObject;
+    }, {})
+    return fluidWeek;
+  }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {

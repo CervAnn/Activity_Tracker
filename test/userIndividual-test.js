@@ -36,4 +36,21 @@ describe('User', function() {
     const user = new User(longUserData);
     expect(user.getAverageFluids(hydrationData, 1)).to.equal(55)
   })
+
+  it('should return ounces of fluids consumed on any given date', function() {
+    const user = new User(longUserData);
+    expect(user.getFluidsOfDay(hydrationData, 1, "06/05/2019")).to.equal(64);
+  })
+
+  it('should return ounces of fluids consumed in a week given a date', function() {
+    const user = new User(longUserData);
+    expect(user.getFluidsOfWeek(hydrationData, 1, "06/05/2019")).to.deep.equal({ '06/05/2019': 64,
+  '07/05/2019': 80,
+  '08/05/2019': 39,
+  '09/05/2019': 40,
+  '10/05/2019': 65,
+  '11/05/2019': 84,
+  '12/05/2019': 33 });
+  })
+  
 });
