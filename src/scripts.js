@@ -58,8 +58,7 @@ $(document).ready(() => {
     $('h3').text('Hello ' + user.returnFirstName(1) + '!');
     $('.info-text-2a').text('You have consumed ' + `${user.getFluidsOfDay(hydrationData, id, today)}` + ' ounces of fluids today.');
     $('.info-text-2b').text('You have consumed the following amounts of fluid this week:')
-    $('.info-text-2c').html(user.parseFluidsOfWeek(user.getFluidsOfWeek(hydrationData, id, today)))
-
+    $('.info-text-2c').html(user.parseFluidsOfWeek(user.getFluidsOfWeek(hydrationData, 1, today)))
   });
 
   $('.blue-close').click(function() {
@@ -81,7 +80,10 @@ $(document).ready(() => {
     $('main').removeClass('grid-main');
     $('.lavendar-close').removeClass('hidden');
     $('h3').text('Hello ' + `${user.returnFirstName(1)}` + '!');
-
+    $('.info-text-3a').text('You have slept ' + `${user.getHoursSleptOfDay(user.getDateOfSleep(sleepData, id, today))}` + ' hours today.');
+    $('.info-text-3b').text('You have slept the following amounts this week:')
+    $('.info-text-3c').html(user.parseSleepOfWeek(user.getSleepOfWeek(sleepData, id, today)));
+    console.log(user.getSleepOfWeek(sleepData, id, today))
   })
 
   $('.lavendar-close').click(function() {
