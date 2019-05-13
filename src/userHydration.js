@@ -12,12 +12,12 @@ class userHydration {
         return Math.floor(averageOunces / numOunces.length);
       }
     
-      getFluidsOfDay(data, id, date) {
+    getFluidsOfDay(data, id, date) {
         const fluidObject = data[id - 1].hydrationData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         return fluidObject.numOunces;
-      }
+    }
     
-      getFluidsOfWeek(data, id, date) {
+    getFluidsOfWeek(data, id, date) {
         const fluidData = data[id - 1].hydrationData;
         const fluidObject = fluidData.find(obj => obj.date === date);
         const fluidWeek = fluidData.reduce((acc, obj, index, array) => {
@@ -30,9 +30,9 @@ class userHydration {
           return ourObject;
         }, {})
         return fluidWeek;
-      }
+    }
     
-      parseFluidsOfWeek(weekObject) {
+    parseFluidsOfWeek(weekObject) {
         const dates = Object.keys(weekObject);
         const fluids = Object.values(weekObject);
         return `
@@ -43,9 +43,9 @@ class userHydration {
           <p class="info-text">${dates[4]}: ${fluids[4]}</p> 
           <p class="info-text">${dates[5]}: ${fluids[5]}</p> 
           <p class="info-text">${dates[6]}: ${fluids[6]}</p>`
-      }
+    }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
     module.exports = userHydration;
-  }
+}
