@@ -31,7 +31,6 @@ class UserRepository {
       return user.address.split(' ')[user.address.split(' ').length - 2];
     });
     this.countStates(states);
-    console.log(states)
     return states;
   }
 
