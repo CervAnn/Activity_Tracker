@@ -12,7 +12,7 @@
       <ul>
         <li>
           <div class="circle">
-            <img class="user-photo" src="../assets/avatar.svg">
+            <img class="user-photo" src="../assets/avatar.svg" alt="generic white outline of a silhouette of a human on a gray background">
           </div>
         </li>
         <li>Welcome, <span class="user-name"></span>!</li>
@@ -20,27 +20,25 @@
         <li>Messages</li>
       </ul>
     </nav>
-    <div class="user-info hidden"></div>
+    <aside class="user-info hidden"></aside>
     <section>
-      <div class="info-card hidden"></div>
-      <div class="info-card2 hidden"></div>
-      <div class="info-card3 hidden"></div>
-      <div class="info-card4 hidden"></div>
+      <article class="info-card hidden"></article>
     </section>
-    <main class="grid-main">
-      <article class="boxes box1">
-        <img class="widget" src="../assets/steps.svg">
-      </article>
-      <article class="boxes box2">
-        <img class="widget" src="../assets/drop.svg">
-      </article>
-      <article class="boxes box3 ">
-        <img class="widget widget-3" src="../assets/moon.svg">
-      </article>
-      <article class="boxes box4">
-        <img class="widget widget-4" src="../assets/chart.svg">
-      </article>
-    </main>
+    <menu role="menubar" aria-orientation="horizontal" class="grid-main">
+      <menuitem class="boxes box1">
+        <img class="widget" src="../assets/steps.svg" alt="two pale yellow footprints pointing upwards">
+      </menuitem>
+      <menuitem class="boxes box2">
+        <img class="widget" src="../assets/drop.svg" alt="pale blue water droplet vector to represent hydration statistics">
+      </menuitem>
+      <menuitem class="boxes box3 ">
+        <img class="widget widget-3" src="../assets/moon.svg" alt="pale lavendar crescent moon vector with 'z's to represent sleep statistics">
+      </menuitem>
+      <menuitem class="boxes box4">
+        <img class="widget widget-4" src="../assets/chart.svg"
+         alt="pale pink clipboard vector to represent Activity statistics">
+      </menuitem>
+    </menu>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="./userIndividual.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>

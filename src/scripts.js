@@ -19,19 +19,19 @@ $(document).ready(() => {
     $('.user-info').toggleClass('hidden');
     $('.user-info').html(`<p>Name: ${user.userData.name}</p><p>Address: 
     ${user.userData.address}</p><p>Email: ${user.userData.email}</p>`);
-    $('main').toggleClass('side-main grid-main');
+    $('menu').toggleClass('side-main grid-main');
   });
 
   $('.box1').click(function() {
     $('.info-card').toggleClass('hidden yellow info-card-stretch');
-    $('main').toggleClass('side-main grid-main');
+    $('menu').toggleClass('side-main grid-main');
     $('.box2, .box3, .box4').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3><p>${user.compareStepGoal(userData)}</p>`);
   });
 
   $('.box2').click(function() {
     $('.info-card').toggleClass('hidden blue info-card-stretch');
-    $('main').toggleClass('side-main grid-main');
+    $('menu').toggleClass('side-main grid-main');
     $('.box1, .box3, .box4').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>
     <p>You have consumed ${user.getFluidsOfDay(hydrationData, id, today)} ounces of fluids today.</p>
@@ -41,7 +41,7 @@ $(document).ready(() => {
 
   $('.box3').click(function() {
     $('.info-card').toggleClass('hidden lavendar info-card-stretch');
-    $('main').toggleClass('side-main grid-main');
+    $('menu').toggleClass('side-main grid-main');
     $('.box1, .box2, .box4').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>
     <p>You have slept ${user.getHoursSleptOfDay(user.getDateOfSleep(sleepData, id, today))} hours today.</p>
@@ -51,7 +51,7 @@ $(document).ready(() => {
   
   $('.box4').click(function() {
     $('.info-card').toggleClass('hidden rose info-card-stretch');
-    $('main').toggleClass('side-main grid-main');
+    $('menu').toggleClass('side-main grid-main');
     $('.box1, .box2, .box3').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>`);
   })
