@@ -62,7 +62,7 @@ describe('userSleep', function() {
 
   it('should return people who sleep good', function() {
     const userZs = new userSleep(userData, 1);
-    expect(userZs.getPeopleWhoSleepGood(sleepData, "13/05/2019")).to.deep.equal([1, 2])
+    expect(userZs.getPeopleWhoSleepGood(sleepData, "13/05/2019")).to.deep.equal([1, 2, 4])
 
   })
 
