@@ -56,7 +56,13 @@ describe('userSleep', function() {
 
   it('should return quality of sleep throughout a week given a date', function() {
     const userZs = new userSleep(userData, 1);
-    expect(userZs.getAllUsersSleepQuality(sleepData)).to.equal(6)
+    expect(userZs.getAllUsersSleepQuality(sleepData)).to.equal(3.08)
+
+  })
+
+  it('should return people who sleep good', function() {
+    const userZs = new userSleep(userData, 1);
+    expect(userZs.getPeopleWhoSleepGood(sleepData, "13/05/2019")).to.deep.equal([1, 2])
 
   })
 
