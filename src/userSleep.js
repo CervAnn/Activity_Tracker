@@ -86,6 +86,19 @@ class userSleep{
         }, {})
         return week;
     }
+
+    getAllUsersSleepQuality(data) {
+        const sleepysleeps = [];
+        const sleepQualityTotal = data.reduce((accum, user, i , array) => {
+            accum.push(user.sleepData)
+            return accum;
+        }, [])
+        sleepQualityTotal.reduce((accum, user, i ,array) => {
+            acc.push(array[i].sleepQuality)
+            console.log(acc)
+        })
+        return accum;
+    }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {

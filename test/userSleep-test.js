@@ -53,4 +53,11 @@ describe('userSleep', function() {
     '11/05/2019': 3.5,
     '12/05/2019': 1.7 });
   })
+
+  it('should return quality of sleep throughout a week given a date', function() {
+    const userZs = new userSleep(userData, 1);
+    expect(userZs.getAllUsersSleepQuality(sleepData)).to.equal(6)
+
+  })
+
 });
