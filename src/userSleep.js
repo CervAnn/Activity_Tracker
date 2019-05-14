@@ -88,17 +88,47 @@ class userSleep{
     }
 
     getAllUsersSleepQuality(data) {
-        const sleepysleeps = [];
-        const sleepQualityTotal = data.reduce((accum, user, i , array) => {
-            accum.push(user.sleepData)
-            return accum;
+        let sleepQuality = data.map(user => user.sleepData).reduce((acc, userData) => {
+            acc.push(userData);
+            return acc;
         }, [])
-        sleepQualityTotal.reduce((accum, user, i ,array) => {
-            acc.push(array[i].sleepQuality)
-            console.log(acc)
-        })
-        return accum;
+        let hopefully = sleepQuality.flat(1);
+        let bigNumber = hopefully.reduce((acc, obj) => {
+            acc += obj.sleepQuality;
+            return acc;
+        }, 0);
+        return parseFloat((bigNumber / hopefully.length).toFixed(2));
     }
+
+    getPeopleWhoSleepGood(data, date) {
+        let sleepData = data.map(user => user.sleepData);
+        // console.log(sleepData)
+        let datas = sleepData.reduce((acc, user, index) => {
+            acc.push(this.getSleepQualityOfWeek(data, index + 1, date))
+            return acc;
+        }, [])
+        // console.log(datas)
+        let findUser = data.reduce((acc, user, index) => {
+            let addUpQualities = Object.values(datas[index]).reduce((acc, numbers) => {
+                acc += numbers;
+                return acc;
+            }, 0)
+            acc[user.userID] = (addUpQualities / 7).toFixed(2);
+        return acc
+        }, {})
+        // console.log(findUser)
+        let valuesOverThree = Object.values(findUser).filter(value => value > 3)
+        let ultimateUsers = Object.keys(findUser).reduce((acc, key, index, array) => {
+            if (findUser[key] === valuesOverThree[index]) {
+                acc.push(parseFloat(key))             
+            }
+            return acc;
+        }, [])
+        console.log(ultimateUsers)
+
+        return ultimateUsers;
+    }
+
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
