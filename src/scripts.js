@@ -1,6 +1,7 @@
 $(document).ready(() => {
   const id = getRandomId();
   const user = new User(userData, id);
+  const userHydro = new userHydration(userData, id)
   var today = new Date();
   const dd = today.getDate();
   const mm = today.getMonth() + 1;
@@ -34,9 +35,9 @@ $(document).ready(() => {
     $('main').toggleClass('side-main grid-main');
     $('.box1, .box3, .box4').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>
-    <p>You have consumed ${user.getFluidsOfDay(hydrationData, id, today)} ounces of fluids today.</p>
+    <p>You have consumed ${userHydro.getFluidsOfDay(hydrationData, id, today)} ounces of fluids today.</p>
     <p>You have consumed the following amounts of fluid this week:</p>
-    <p>${user.parseFluidsOfWeek(user.getFluidsOfWeek(hydrationData, id, today))}</p>`);
+    <p>${userHydro.parseFluidsOfWeek(userHydro.getFluidsOfWeek(hydrationData, id, today))}</p>`);
   });
 
   $('.box3').click(function() {
