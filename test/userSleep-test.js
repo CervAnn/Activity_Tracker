@@ -33,13 +33,13 @@ describe('userSleep', function() {
     
   it('should return hours slept in a week given a date', function() {
     const userZs = new userSleep(userData, 1);
-    expect(userZs.getSleepOfWeek(sleepData, 1, "13/05/2019")).to.deep.equal({ "06/05/2019": 8,
-    "07/05/2019": 10.7,
-    "08/05/2019": 8.1,
-    "09/05/2019": 4.5,
-    "10/05/2019": 10.7,
-    "11/05/2019": 5.6,
-    "12/05/2019": 10.1 });
+    expect(userZs.getSleepOfWeek(sleepData, 1, "13/05/2019")).to.deep.equal({ "07/05/2019": 10.7,
+         "08/05/2019": 8.1,
+         "09/05/2019": 4.5,
+         "10/05/2019": 10.7,
+         "11/05/2019": 5.6,
+         "12/05/2019": 10.1,
+        "13/05/2019": 10.1 });
   })
     
   it('should return quality of sleep throughout a week given a date', function() {
@@ -57,13 +57,20 @@ describe('userSleep', function() {
   it('should return quality of sleep throughout a week given a date', function() {
     const userZs = new userSleep(userData, 1);
     expect(userZs.getAllUsersSleepQuality(sleepData)).to.equal(3.08)
-
   })
 
   it('should return people who sleep good', function() {
     const userZs = new userSleep(userData, 1);
     expect(userZs.getPeopleWhoSleepGood(sleepData, "13/05/2019")).to.deep.equal([1, 2, 4])
-
   })
 
+  it('should return people who sleep long', function() {
+    const userZs = new userSleep(userData, 1);
+    expect(userZs.getPeopleWhoSleepLong(sleepData, "13/05/2019")).to.deep.equal(1)
+  })
+
+  it('should return people who sleep best', function() {
+    const userZs = new userSleep(userData, 1);
+    expect(userZs.getPeopleWhoSleepBest(sleepData, "13/05/2019")).to.deep.equal(1)
+  })
 });
