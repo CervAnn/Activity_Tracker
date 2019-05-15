@@ -2,6 +2,7 @@ $(document).ready(() => {
   const id = getRandomId();
   const user = new User(userData, id);
   const userHydro = new userHydration(userData, id)
+  const userZs = new userSleep(userData, id)
   var today = new Date();
   const dd = today.getDate();
   const mm = today.getMonth() + 1;
@@ -41,13 +42,15 @@ $(document).ready(() => {
   });
 
   $('.box3').click(function() {
+    console.log(userZs.getSleepOfWeek(sleepData, id, today))
     $('.info-card').toggleClass('hidden lavendar info-card-stretch');
     $('menu').toggleClass('side-main grid-main');
     $('.box1, .box2, .box4').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>
-    <p>You have slept ${user.getHoursSleptOfDay(user.getDateOfSleep(sleepData, id, today))} hours today.</p>
+    <p>You have slept ${userZs.getHoursSleptOfDay(userZs.getDateOfSleep(sleepData, id, today))} hours today.</p>
     <p>You have slept the following amounts this week:</p>
-    <p>${user.parseSleepOfWeek(user.getSleepOfWeek(sleepData, id, today))}</p>`);
+    <p>${userZs.parseSleepOfWeek(userZs.getSleepOfWeek(sleepData, id, today))}</p>
+    <p>On average, you sleep ${userZs.getAverageSleep(sleepData, id)} with an average quality of ${userZs.getAverageSleepQuality(sleepData, id)}.</p>`);
   });
   
   $('.box4').click(function() {
