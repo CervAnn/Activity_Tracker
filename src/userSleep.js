@@ -102,12 +102,10 @@ class userSleep{
 
     getPeopleWhoSleepGood(data, date) {
         let sleepData = data.map(user => user.sleepData);
-        // console.log(sleepData)
         let datas = sleepData.reduce((acc, user, index) => {
             acc.push(this.getSleepQualityOfWeek(data, index + 1, date))
             return acc;
         }, [])
-        // console.log(datas)
         let findUser = data.reduce((acc, user, index) => {
             let addUpQualities = Object.values(datas[index]).reduce((acc, numbers) => {
                 acc += numbers;
@@ -116,19 +114,15 @@ class userSleep{
             acc[user.userID] = (addUpQualities / 7).toFixed(2);
         return acc
         }, {})
-        // console.log(findUser)
         let valuesOverThree = Object.values(findUser).filter(value => value > 3)
         let ultimateUsers = Object.keys(findUser).reduce((acc, key, index, array) => {
-            if (findUser[key] === valuesOverThree[index]) {
+            if (valuesOverThree.includes(findUser[key])) {
                 acc.push(parseFloat(key))             
             }
             return acc;
         }, [])
-        console.log(ultimateUsers)
-
         return ultimateUsers;
     }
-
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
