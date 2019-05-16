@@ -2,7 +2,6 @@ class userSleep{
     constructor(userData, id) {
         this.userData = userData[id-1];
     }
-
     getAverageSleep(data, id) {
         const hoursSlept = data[id - 1].sleepData.map(object => {
           return object.hoursSlept;
@@ -35,19 +34,9 @@ class userSleep{
         return object.sleepQuality;
     }
     
-    // getWeekPrecedingDate(data, id, date) {
-    //     const sleepData = data[id - 1].sleepData;
-    //     const day = sleepData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
-    //     const week = data.reduce((acc, obj, index, array) => {
-    //       const indexOfDay = array.indexOf(day);
-    //       return data.slice((indexOfDay - 7), indexOfDay)
-    //     }, {})
-    //     return week;
-    // }
-    
     getSleepOfWeek(data, id, date) {
         const sleepData = data[id - 1].sleepData;
-        const day = sleepData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        const day = sleepData.find(obj => obj.date === date);
         const week = sleepData.reduce((acc, obj, index, array) => {
             const indexOfDay = array.indexOf(day);
             const weekOfSleep = sleepData.slice((indexOfDay - 6), (indexOfDay + 1))
@@ -102,12 +91,13 @@ class userSleep{
     }
 
     getPeopleWhoSleepGood(data, date) {
-        let sleepData = data.map(user => user.sleepData).reduce((acc, user, index) => {
+        let sleepData = data.map(user => user.sleepData);
+        let datas = sleepData.reduce((acc, user, index) => {
             acc.push(this.getSleepQualityOfWeek(data, index + 1, date))
             return acc;
         }, [])
         let findUser = data.reduce((acc, user, index) => {
-            let addUpQualities = Object.values(sleepData[index]).reduce((acc, numbers) => {
+            let addUpQualities = Object.values(datas[index]).reduce((acc, numbers) => {
                 acc += numbers;
                 return acc;
             }, 0)
