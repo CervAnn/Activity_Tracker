@@ -115,14 +115,14 @@ describe('userActivity', function() {
   })
 
     it('should return steps given date', function() {
-    const userTrek = new userActivity(userData, 1);
-    expect(userTrek.getStairsOfDay(activityData, 1, "15/05/2019")).to.equal(32)
-  })
+      const userTrek = new userActivity(userData, 1);
+      expect(userTrek.getStairsOfDay(activityData, 1, "15/05/2019")).to.equal(32)
+    })
 
      it('should return steps given date', function() {
-    const userTrek = new userActivity(userData, 1);
-    expect(userTrek.getMinutesOfDay(activityData, 1, "15/05/2019")).to.equal(228)
-  })
+      const userTrek = new userActivity(userData, 1);
+      expect(userTrek.getMinutesOfDay(activityData, 1, "15/05/2019")).to.equal(228)
+     })
 
      it('should compare a user\'s steps to the average user for a given day', function() {
       const userTrek = new userActivity(userData, 1);
@@ -137,5 +137,25 @@ describe('userActivity', function() {
      it('should compare a user\'s minutes of activity to the average user for a given day', function() {
       const userTrek = new userActivity(userData, 1);
       expect(userTrek.compareMinutes(activityData, 1, "15/05/2019")).to.equal('You spent 90 more minutes active than the average user today.')
+     })
+
+     it('should return steps for a week given date', function() {
+      const userTrek = new userActivity(userData, 1);
+      expect(userTrek.getStepsOfWeek(activityData, 1, "15/05/2019")).to.deep.equal({ '08/05/2019': 2387,
+  '09/05/2019': 6326,
+  '10/05/2019': 13644,
+  '11/05/2019': 4337,
+  '12/05/2019': 9068,
+  '13/05/2019': 2925,
+  '14/05/2019': 3338 })
+     })
+
+     it('should compare the step counts of a user and their friends for a week', function() {
+      const userTrek = new userActivity(userData, 1);
+      expect(userTrek.getStepChallengeInfo(activityData, userData, 1, 2, 3, 4, "15/05/2019")).to.equal(`<p>Elaina Rau had the most steps this week with 80455 steps!</p>
+      <p>Shayne Swift walked 42025 steps}!</p>
+      <p>Cleo Lindgren walked 42025 steps}!</p>
+      <p>Elaina Rau walked 47787 steps}!</p>
+      <p>Grady Wolff walked 80455 steps}!</p>`)
      })
 });

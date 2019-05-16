@@ -59,7 +59,6 @@ class userActivity {
             acc += obj.minutesActive;
             return acc;
         }, 0);
-        // console.log(parseInt((totalMinutes / flatMinutes.length)))
         return parseInt((totalMinutes / flatMinutes.length));
     }
 
@@ -73,7 +72,6 @@ class userActivity {
             acc += obj.numSteps;
             return acc;
         }, 0);
-        // console.log(parseInt((totalMinutes / flatSteps.length)))
         return parseInt((totalMinutes / flatSteps.length));
     }
 
@@ -119,6 +117,42 @@ class userActivity {
         } else {
             return `You spent ${this.findAverageMinutesForDate(data, date) - this.getMinutesOfDay(data, id, date)} less minutes active than the average user today.`
         }
+    }
+
+    getStepsOfWeek(data, id, date) {
+        const StepData = data[id - 1].activityData;
+        const StepObject = StepData.find(obj => obj.date === date);
+        const StepWeek = StepData.reduce((acc, obj, index, array) => {
+          const theIndex = array.indexOf(StepObject);
+          const newArray = StepData.slice((theIndex - 7), theIndex)
+          const ourObject = newArray.reduce((acc, obj, index, array) => {
+            acc[obj.date] = obj.numSteps;
+            return acc;
+          }, {})
+          return ourObject;
+        }, {})
+        return StepWeek;
+    }
+
+    getStepChallengeInfo(data, userData, id, id2, id3, id4, date) {
+        let stepObjects = [this.getStepsOfWeek(data, id, date), 
+        this.getStepsOfWeek(data, id, date), 
+        this.getStepsOfWeek(data, id2, date), 
+        this.getStepsOfWeek(data, id3, date), 
+        this.getStepsOfWeek(data, id4, date)];
+        var bigSteps = stepObjects.reduce((acc, obj) => {
+            var bigStep = Object.values(obj).reduce((acc, step) => {
+                acc += step;
+                return acc;
+            }, 0);
+            acc.push(bigStep);
+            return acc;
+        }, []);
+        return `<p>${userData[bigSteps.indexOf(Math.max(...bigSteps))].name} had the most steps this week with ${Math.max(...bigSteps)} steps!</p>
+        <p>${userData[id].name} walked ${bigSteps[0]} steps}!</p>
+        <p>${userData[id2].name} walked ${bigSteps[1]} steps}!</p>
+        <p>${userData[id3].name} walked ${bigSteps[2]} steps}!</p>
+        <p>${userData[id4].name} walked ${bigSteps[3]} steps}!</p>`;
     }
 }
 

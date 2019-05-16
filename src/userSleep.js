@@ -36,7 +36,7 @@ class userSleep{
     
     getSleepOfWeek(data, id, date) {
         const sleepData = data[id - 1].sleepData;
-        const day = sleepData.find(obj => obj.date === date);
+        const day = sleepData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         const week = sleepData.reduce((acc, obj, index, array) => {
             const indexOfDay = array.indexOf(day);
             const weekOfSleep = sleepData.slice((indexOfDay - 6), (indexOfDay + 1))
