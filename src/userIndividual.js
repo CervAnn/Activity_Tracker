@@ -1,14 +1,11 @@
 class User {
   constructor(userData, id) {
-    // this.userData = userData;
-    // this.userData = userData[Math.floor(Math.random()*userData.length)]
     this.userData = userData[id - 1]
 
   }
 
   returnFirstName() {
    let userName = this.userData.name.split(" ");
-   // let userName = this.userData.name.split(" ");
    return userName[0];
   }
 

@@ -1,21 +1,7 @@
-// const User = require('../src/userIndividual');
-// const userData = require('../data/users');
-
-// const userDataSample1 = require('../data/userDataSample1');
-
 class UserRepository {
   constructor(dataFilepath) {
     this.dataFilepath = require(dataFilepath);
-  }
-
-  // findUserData(id) {
-  //   var correctUser = this.dataFilepath.find(user => {
-  //     if (user.id === id) {
-  //       return user;
-  //     }
-  //     return correctUser;
-  //   })
-  // } 
+  } 
 
   averageStepGoal() {
   let userSteps = this.dataFilepath.map(user => {
@@ -48,23 +34,10 @@ class UserRepository {
   }
 
   findMostState(stateObject) {
-    // sort compare function for objects
-    // var states = this.dataFilepath.map(user => {
-    //   return user.address.split(' ')[user.address.split(' ').length - 2];
-    // });
-    // var statesAndCounts = states.reduce((acc, state) => {
-    //   if (!acc.hasOwnProperty(state)) {
-    //     acc[state] = 0;
-    //   } else {
-    //     acc[state] += 1;
-    //   }
-    //   return acc;
-    // }, {});
     const stateCounts = Object.values(stateObject);
     stateCounts.sort(function(a, b) {
       return b - a;
     });
-    // stateCounts = Math.max(...stateCounts)
     for (var state in stateObject) {
       if (stateObject[state] === stateCounts[0]) {
         return state
