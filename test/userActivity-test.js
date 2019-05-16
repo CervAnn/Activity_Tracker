@@ -83,4 +83,9 @@ describe('userActivity', function() {
   '12/08/2019',
   '13/08/2019' ])
   })
+
+   it('should return their stair climbing record', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.findStairClimbingRecord(activityData, 1)).to.equal(50)
+  })
 });

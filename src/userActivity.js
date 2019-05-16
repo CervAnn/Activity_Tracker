@@ -30,6 +30,11 @@ class userActivity {
         let activityObjects = data[id -1].activityData.filter(obj => obj.numSteps > this.userData.dailyStepGoal);
         return activityObjects.map(obj => obj.date);
     }
+
+    findStairClimbingRecord(data, id) {
+        let stairRecords = data[id - 1].activityData.map(obj => obj.flightsOfStairs);
+        return Math.max(...stairRecords);
+    }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
