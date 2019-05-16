@@ -1,6 +1,10 @@
 $(document).ready(() => {
   const id = getRandomId();
+  const friendIds = [getRandomId(), getRandomId(), getRandomId()]
   const user = new User(userData, id);
+  const friend1 = new User(userData, friendIds[0]);
+  const friend2 = new User(userData, friendIds[1]);
+  const friend3 = new User(userData, friendIds[2]);
   const userHydro = new userHydration(userData, id)
   const userZs = new userSleep(userData, id)
   const userAct = new userActivity(userData, id);
@@ -18,10 +22,21 @@ $(document).ready(() => {
     $('.user-name').text(user.returnFirstName(id));
   })
 
-  $('.user-photo').click(function() {
+  $('.user-info').click(function() {
     $('.user-info').toggleClass('hidden');
     $('.user-info').html(`<p>Name: ${user.userData.name}</p><p>Address: 
     ${user.userData.address}</p><p>Email: ${user.userData.email}</p>`);
+    $('menu').toggleClass('side-main grid-main');
+  });
+
+  $('.friends').click(function() {
+    $('.info-card').toggleClass('hidden peach info-card-stretch');
+    $('.box1, .box2, .box3, .box4').toggleClass('hidden');
+    $('.info-card').html(`
+      <p>${friend1.returnFirstName(friendIds[0])} has walked ${userAct.getStepsOfDay(activityData, friendIds[0], today)} steps today.</p>
+      <p>${friend2.returnFirstName(friendIds[1])} has walked ${userAct.getStepsOfDay(activityData, friendIds[1], today)} steps today.</p>
+      <p>${friend3.returnFirstName(friendIds[2])} has walked ${userAct.getStepsOfDay(activityData, friendIds[2], today)} steps today.</p>
+      <p>${userAct.getStepChallengeInfo(activityData, userData, id, friendIds[0], friendIds[1], friendIds[2], today)}`);
     $('menu').toggleClass('side-main grid-main');
   });
 
@@ -32,7 +47,7 @@ $(document).ready(() => {
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3><p>${user.compareStepGoal(userData)}</p>
       <p>You have walked ${userAct.getStepsOfDay(activityData, id, today)} steps today which, based on your stride length, amounts to ${userAct.walkedMilesUser(activityData, userData, id, today)} miles..</p>
       <p>Your all time walking record is ${userAct.findStepRecord(activityData, id)} steps in a day.</p>
-      <p>${userAct.compareSteps(activityData, id, today)}</p>`);
+      ${userAct.compareSteps(activityData, id, today)}`);
   });
 
   $('.box2').click(function() {
