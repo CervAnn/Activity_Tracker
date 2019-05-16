@@ -83,4 +83,29 @@ describe('userActivity', function() {
   '12/08/2019',
   '13/08/2019' ])
   })
+
+   it('should return their stair climbing record', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.findStairClimbingRecord(activityData, 1)).to.equal(50)
+  })
+
+   it('should return average number of stairs climbed on a specific date', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.findAverageStairsForDate(activityData, "15/05/2019")).to.equal(25)
+  })
+
+   it('should return average number of minutes active on a specific date', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.findAverageMinutesForDate(activityData, "15/05/2019")).to.equal(138)
+  })
+
+   it('should return average number of minutes active on a specific date', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.findAverageStepsForDate(activityData, "15/05/2019")).to.equal(9457)
+  })
+
+   it('should return their step record', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.findStepRecord(activityData, 1)).to.equal(14811)
+  })
 });

@@ -30,6 +30,57 @@ class userActivity {
         let activityObjects = data[id -1].activityData.filter(obj => obj.numSteps > this.userData.dailyStepGoal);
         return activityObjects.map(obj => obj.date);
     }
+
+    findStairClimbingRecord(data, id) {
+        let stairRecords = data[id - 1].activityData.map(obj => obj.flightsOfStairs);
+        return Math.max(...stairRecords);
+    }
+
+    findAverageStairsForDate(data, date) {
+        let stairsClimbedObject = data.map(user => user.activityData).reduce((acc, userData) => {
+            acc.push(userData.filter(user => user.date === date));
+            return acc;
+        }, [])
+        let flatStairs = stairsClimbedObject.flat(1);
+        let totalStairs = flatStairs.reduce((acc, obj) => {
+            acc += obj.flightsOfStairs;
+            return acc;
+        }, 0);
+        return parseInt((totalStairs / flatStairs.length));
+    }
+
+    findAverageMinutesForDate(data, date) {
+        let minutesActiveObjects = data.map(user => user.activityData).reduce((acc, userData) => {
+            acc.push(userData.filter(user => user.date === date));
+            return acc;
+        }, [])
+        let flatMinutes = minutesActiveObjects.flat(1);
+        let totalMinutes = flatMinutes.reduce((acc, obj) => {
+            acc += obj.minutesActive;
+            return acc;
+        }, 0);
+        // console.log(parseInt((totalMinutes / flatMinutes.length)))
+        return parseInt((totalMinutes / flatMinutes.length));
+    }
+
+    findAverageStepsForDate(data, date) {
+        let stepsObjects = data.map(user => user.activityData).reduce((acc, userData) => {
+            acc.push(userData.filter(user => user.date === date));
+            return acc;
+        }, [])
+        let flatSteps = stepsObjects.flat(1);
+        let totalMinutes = flatSteps.reduce((acc, obj) => {
+            acc += obj.numSteps;
+            return acc;
+        }, 0);
+        // console.log(parseInt((totalMinutes / flatSteps.length)))
+        return parseInt((totalMinutes / flatSteps.length));
+    }
+
+    findStepRecord(data, id) {
+        let stepRecords = data[id - 1].activityData.map(obj => obj.numSteps);
+        return Math.max(...stepRecords);
+    }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
