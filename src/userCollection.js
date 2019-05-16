@@ -3,6 +3,7 @@ class UserRepository {
     this.dataFilepath = require(dataFilepath);
   }
 
+
   averageStepGoal() {
   let userSteps = this.dataFilepath.map(user => {
     return user.dailyStepGoal

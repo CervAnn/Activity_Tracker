@@ -22,7 +22,7 @@ $(document).ready(() => {
     $('.user-name').text(user.returnFirstName(id));
   })
 
-  $('.user-info').click(function() {
+  $('.user-photo').click(function() {
     $('.user-info').toggleClass('hidden');
     $('.user-info').html(`<p>Name: ${user.userData.name}</p><p>Address: 
     ${user.userData.address}</p><p>Email: ${user.userData.email}</p>`);
