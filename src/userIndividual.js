@@ -1,14 +1,10 @@
 class User {
   constructor(userData, id) {
-    // this.userData = userData;
-    // this.userData = userData[Math.floor(Math.random()*userData.length)]
     this.userData = userData[id - 1]
-
   }
 
   returnFirstName() {
    let userName = this.userData.name.split(" ");
-   // let userName = this.userData.name.split(" ");
    return userName[0];
   }
 
@@ -27,7 +23,7 @@ class User {
     if (this.userData.dailyStepGoal > averageStepGoal) {
       return `Your daily step goal is ${this.userData.dailyStepGoal - averageStepGoal} more than the average user.`;
     } else {
-      return `Your daily step goal is ${averageStepGoal - this.userData.dailyStepGoal} less than the average user.`;
+      return `Your daily step goal is ${averageStepGoal - this.userData.dailyStepGoal} fewer than the average user.`;
     }
   }
 }
