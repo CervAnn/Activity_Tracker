@@ -13,7 +13,8 @@ class userHydration {
       }
     
     getFluidsOfDay(data, id, date) {
-        const fluidObject = data[id - 1].hydrationData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        const fluidObject = data[id - 1].hydrationData
+        .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         return fluidObject.numOunces;
     }
     

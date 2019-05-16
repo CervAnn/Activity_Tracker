@@ -1,6 +1,6 @@
 $(document).ready(() => {
   const id = getRandomId();
-  const friendIds = [getRandomId(), getRandomId(), getRandomId()]
+  const friendIds = [getRandomId(), getRandomId(), getRandomId()];
   const user = new User(userData, id);
   const friend1 = new User(userData, friendIds[0]);
   const friend2 = new User(userData, friendIds[1]);
@@ -33,9 +33,12 @@ $(document).ready(() => {
     $('.info-card').toggleClass('hidden peach info-card-stretch');
     $('.box1, .box2, .box3, .box4').toggleClass('hidden');
     $('.info-card').html(`
-      <p>${friend1.returnFirstName(friendIds[0])} has walked ${userAct.getStepsOfDay(activityData, friendIds[0], today)} steps today.</p>
-      <p>${friend2.returnFirstName(friendIds[1])} has walked ${userAct.getStepsOfDay(activityData, friendIds[1], today)} steps today.</p>
-      <p>${friend3.returnFirstName(friendIds[2])} has walked ${userAct.getStepsOfDay(activityData, friendIds[2], today)} steps today.</p>
+      <p>${friend1.returnFirstName(friendIds[0])} has walked 
+      ${userAct.getStepsOfDay(activityData, friendIds[0], today)} steps today.</p>
+      <p>${friend2.returnFirstName(friendIds[1])} has walked 
+      ${userAct.getStepsOfDay(activityData, friendIds[1], today)} steps today.</p>
+      <p>${friend3.returnFirstName(friendIds[2])} has walked 
+      ${userAct.getStepsOfDay(activityData, friendIds[2], today)} steps today.</p>
       <p>${userAct.getStepChallengeInfo(activityData, userData, id, friendIds[0], friendIds[1], friendIds[2], today)}`);
     $('menu').toggleClass('side-main grid-main');
   });
@@ -44,9 +47,13 @@ $(document).ready(() => {
     $('.info-card').toggleClass('hidden yellow info-card-stretch');
     $('menu').toggleClass('side-main grid-main');
     $('.box2, .box3, .box4').toggleClass('hidden');
-    $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3><p>${user.compareStepGoal(userData)}</p>
-      <p>You have walked ${userAct.getStepsOfDay(activityData, id, today)} steps today which, based on your stride length, amounts to ${userAct.walkedMilesUser(activityData, userData, id, today)} miles.</p>
-      <p>Your all time walking record is ${userAct.findStepRecord(activityData, id)} steps in a day.</p>
+    $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>
+      <p>${user.compareStepGoal(userData)}</p>
+      <p>You have walked ${userAct.getStepsOfDay(activityData, id, today)} steps 
+      today which, based on your stride length, amounts to 
+      ${userAct.walkedMilesUser(activityData, userData, id, today)} miles..</p>
+      <p>Your all time walking record is ${userAct.findStepRecord(activityData, id)} 
+      steps in a day.</p>
       ${userAct.compareSteps(activityData, id, today)}`);
   });
 
@@ -55,9 +62,11 @@ $(document).ready(() => {
     $('menu').toggleClass('side-main grid-main');
     $('.box1, .box3, .box4').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>
-    <p>You have consumed ${userHydro.getFluidsOfDay(hydrationData, id, today)} ounces of fluids today.</p>
+    <p>You have consumed ${userHydro.getFluidsOfDay(hydrationData, id, today)} 
+    ounces of fluids today.</p>
     <p>You have consumed the following amounts of fluid this week:</p>
-    <p>${userHydro.parseFluidsOfWeek(userHydro.getFluidsOfWeek(hydrationData, id, today))}</p>`);
+    <p>${userHydro.parseFluidsOfWeek(userHydro.
+      getFluidsOfWeek(hydrationData, id, today))}</p>`);
   });
 
   $('.box3').click(function() {
@@ -66,10 +75,14 @@ $(document).ready(() => {
     $('menu').toggleClass('side-main grid-main');
     $('.box1, .box2, .box4').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>
-    <p>You have slept ${userZs.getHoursSleptOfDay(userZs.getDateOfSleep(sleepData, id, today))} hours today.</p>
-    <p>You have slept the following amounts this week:</p>
-    <p>${userZs.parseSleepOfWeek(userZs.getSleepOfWeek(sleepData, id, today))}</p>
-    <p>On average, you sleep ${userZs.getAverageSleep(sleepData, id)} with an average quality of ${userZs.getAverageSleepQuality(sleepData, id)}.</p>`);
+      <p>You have slept ${userZs.getHoursSleptOfDay(userZs.
+      getDateOfSleep(sleepData, id, today))} hours today.</p>
+      <p>This week, you have slept the following hours per day:</p>
+      <p>${userZs.parseSleepOfWeek(userZs.
+      getSleepOfWeek(sleepData, id, today))}</p>
+      <p>On average, you sleep ${userZs.
+      getAverageSleep(sleepData, id)} hours with an average quality of ${userZs.
+      getAverageSleepQuality(sleepData, id)}.</p>`);
   });
   
   $('.box4').click(function() {

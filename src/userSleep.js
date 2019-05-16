@@ -23,7 +23,8 @@ class userSleep{
     }
     
     getDateOfSleep(data, id, date) {
-        return data[id - 1].sleepData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        return data[id - 1].sleepData
+        .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
     }
     
     getHoursSleptOfDay(object) {
@@ -36,7 +37,8 @@ class userSleep{
     
     getSleepOfWeek(data, id, date) {
         const sleepData = data[id - 1].sleepData;
-        const day = sleepData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        const day = sleepData
+        .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         const week = sleepData.reduce((acc, obj, index, array) => {
             const indexOfDay = array.indexOf(day);
             const weekOfSleep = sleepData.slice((indexOfDay - 6), (indexOfDay + 1))
@@ -116,7 +118,8 @@ class userSleep{
 
     getPeopleWhoSleepLong(data, date) {
         let userIds = data.map(user => user.userID);
-        let hoursSlept = data.map(user => user.sleepData).reduce((acc, specificData) => {
+        let hoursSlept = data.map(user => user.sleepData)
+        .reduce((acc, specificData) => {
             var dateObject = specificData.find(obj => obj.date === date)
             acc.push(dateObject.hoursSlept);
             return acc;
@@ -128,7 +131,8 @@ class userSleep{
 
     getPeopleWhoSleepBest(data, date) {
         let userIds = data.map(user => user.userID);
-        let sleepQualities = data.map(user => user.sleepData).reduce((acc, specificData) => {
+        let sleepQualities = data.map(user => user.sleepData)
+        .reduce((acc, specificData) => {
             var dateObject = specificData.find(obj => obj.date === date)
             acc.push(dateObject.sleepQuality);
             return acc;

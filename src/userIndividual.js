@@ -1,7 +1,6 @@
 class User {
   constructor(userData, id) {
     this.userData = userData[id - 1]
-
   }
 
   returnFirstName() {
@@ -24,7 +23,7 @@ class User {
     if (this.userData.dailyStepGoal > averageStepGoal) {
       return `Your daily step goal is ${this.userData.dailyStepGoal - averageStepGoal} more than the average user.`;
     } else {
-      return `Your daily step goal is ${averageStepGoal - this.userData.dailyStepGoal} less than the average user.`;
+      return `Your daily step goal is ${averageStepGoal - this.userData.dailyStepGoal} fewer than the average user.`;
     }
   }
 }

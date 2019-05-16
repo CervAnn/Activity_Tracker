@@ -1,7 +1,8 @@
 class UserRepository {
   constructor(dataFilepath) {
     this.dataFilepath = require(dataFilepath);
-  } 
+  }
+
 
   averageStepGoal() {
   let userSteps = this.dataFilepath.map(user => {

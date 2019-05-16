@@ -49,17 +49,20 @@ class userActivity {
     }
 
     findDaysUserExceedsStepGoal(data, id, date) {
-        let activityObjects = data[id -1].activityData.filter(obj => obj.numSteps > this.userData.dailyStepGoal);
+        let activityObjects = data[id -1].activityData.
+        filter(obj => obj.numSteps > this.userData.dailyStepGoal);
         return activityObjects.map(obj => obj.date);
     }
 
     findStairClimbingRecord(data, id) {
-        let stairRecords = data[id - 1].activityData.map(obj => obj.flightsOfStairs);
+        let stairRecords = data[id - 1].activityData.
+        map(obj => obj.flightsOfStairs);
         return Math.max(...stairRecords);
     }
 
     findAverageStairsForDate(data, date) {
-        let stairsClimbedObject = data.map(user => user.activityData).reduce((acc, userData) => {
+        let stairsClimbedObject = data.map(user => user.activityData).
+        reduce((acc, userData) => {
             acc.push(userData.filter(user => user.date === date));
             return acc;
         }, [])
@@ -72,7 +75,8 @@ class userActivity {
     }
 
     findAverageMinutesForDate(data, date) {
-        let minutesActiveObjects = data.map(user => user.activityData).reduce((acc, userData) => {
+        let minutesActiveObjects = data.
+        map(user => user.activityData).reduce((acc, userData) => {
             acc.push(userData.filter(user => user.date === date));
             return acc;
         }, [])
@@ -85,7 +89,8 @@ class userActivity {
     }
 
     findAverageStepsForDate(data, date) {
-        let stepsObjects = data.map(user => user.activityData).reduce((acc, userData) => {
+        let stepsObjects = data.map(user => user.activityData)
+        .reduce((acc, userData) => {
             acc.push(userData.filter(user => user.date === date));
             return acc;
         }, [])
@@ -103,17 +108,20 @@ class userActivity {
     }
 
     getStepsOfDay(data, id, date) {
-        const stepObject = data[id - 1].activityData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        const stepObject = data[id - 1].activityData
+        .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         return stepObject.numSteps;
     }
 
     getStairsOfDay(data, id, date) {
-        const stairObject = data[id - 1].activityData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        const stairObject = data[id - 1].activityData
+        .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         return stairObject.flightsOfStairs;
     }
 
     getMinutesOfDay(data, id, date) {
-        const minuteObject = data[id - 1].activityData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        const minuteObject = data[id - 1].activityData
+        .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         return minuteObject.minutesActive;
     }
 
@@ -121,7 +129,7 @@ class userActivity {
         if (this.getStepsOfDay(data, id, date) > this.findAverageStepsForDate(data, date)) {
             return `You walked ${this.getStepsOfDay(data, id, date) - this.findAverageStepsForDate(data, date)} more steps than the average user today.`
         } else {
-            return `You walked ${this.findAverageStepsForDate(data, date) - this.getStepsOfDay(data, id, date)} less steps than the average user today.`
+            return `You walked ${this.findAverageStepsForDate(data, date) - this.getStepsOfDay(data, id, date)} fewer steps than the average user today.`
         }
     }
 
@@ -129,7 +137,7 @@ class userActivity {
         if (this.getStairsOfDay(data, id, date) > this.findAverageStairsForDate(data, date)) {
             return `You walked up ${this.getStairsOfDay(data, id, date) - this.findAverageStairsForDate(data, date)} more stairs than the average user today.`
         } else {
-            return `You walked up ${this.findAverageStairsForDate(data, date) - this.getStairsOfDay(data, id, date)} less stairs than the average user today.`
+            return `You walked up ${this.findAverageStairsForDate(data, date) - this.getStairsOfDay(data, id, date)} fewer stairs than the average user today.`
         }
     }
 
@@ -137,7 +145,7 @@ class userActivity {
         if (this.getMinutesOfDay(data, id, date) > this.findAverageMinutesForDate(data, date)) {
             return `You spent ${this.getMinutesOfDay(data, id, date) - this.findAverageMinutesForDate(data, date)} more minutes active than the average user today.`
         } else {
-            return `You spent ${this.findAverageMinutesForDate(data, date) - this.getMinutesOfDay(data, id, date)} less minutes active than the average user today.`
+            return `You spent ${this.findAverageMinutesForDate(data, date) - this.getMinutesOfDay(data, id, date)} fewer minutes active than the average user today.`
         }
     }
 
@@ -171,10 +179,10 @@ class userActivity {
             return acc;
         }, []);
         return `<p>${userData[bigSteps.indexOf(Math.max(...bigSteps))].name} had the most steps this week with ${Math.max(...bigSteps)} steps!</p>
-        <p>${userData[id].name} walked ${bigSteps[0]} steps}!</p>
-        <p>${userData[id2].name} walked ${bigSteps[1]} steps}!</p>
-        <p>${userData[id3].name} walked ${bigSteps[2]} steps}!</p>
-        <p>${userData[id4].name} walked ${bigSteps[3]} steps}!</p>`;
+      <p>${userData[id].name} walked ${bigSteps[0]} steps}!</p>
+      <p>${userData[id2].name} walked ${bigSteps[1]} steps}!</p>
+      <p>${userData[id3].name} walked ${bigSteps[2]} steps}!</p>
+      <p>${userData[id4].name} walked ${bigSteps[3]} steps}!</p>`;
     }
 }
 
