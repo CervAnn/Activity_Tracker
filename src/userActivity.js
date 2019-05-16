@@ -25,6 +25,11 @@ class userActivity {
             return false;
         }
     }
+
+    findDaysUserExceedsStepGoal(data, id, date) {
+        let activityObjects = data[id -1].activityData.filter(obj => obj.numSteps > this.userData.dailyStepGoal);
+        return activityObjects.map(obj => obj.date);
+    }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
