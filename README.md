@@ -11,8 +11,3 @@ Should you be interesting in running this project on your local machine, please 
 2. Change into the directory and install the library dependencies. Run `npm install` to install project dependencies.
 3. Run `open src/index.html` in the terminal to see the HTML page.
 
-### Composition Images
-
-![Finished Screen shot](https://raw.githubusercontent.com/CervAnn/check_yoself/master/Screen%20Shot%202019-04-17%20at%207.44.33%20AM.png)
-
-![Finished Screen shot](https://raw.githubusercontent.com/CervAnn/check_yoself/master/Screen%20Shot%202019-04-17%20at%207.44.33%20AM.png)
