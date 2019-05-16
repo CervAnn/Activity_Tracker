@@ -103,4 +103,9 @@ describe('userActivity', function() {
     const userTrek = new userActivity(userData, 1);
     expect(userTrek.findAverageStepsForDate(activityData, "15/05/2019")).to.equal(9457)
   })
+
+   it('should return their step record', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.findStepRecord(activityData, 1)).to.equal(14811)
+  })
 });

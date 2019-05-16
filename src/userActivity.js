@@ -76,6 +76,11 @@ class userActivity {
         // console.log(parseInt((totalMinutes / flatSteps.length)))
         return parseInt((totalMinutes / flatSteps.length));
     }
+
+    findStepRecord(data, id) {
+        let stepRecords = data[id - 1].activityData.map(obj => obj.numSteps);
+        return Math.max(...stepRecords);
+    }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
