@@ -11,7 +11,7 @@ describe('userActivity', function() {
     expect(userActivity).to.be.a('function');
   });
 
-  it('should return miles walks based on steps for a given day', function() {
+  it('should return the miles walked based on steps for a given day', function() {
     const userTrek = new userActivity(userData, 1);
     expect(userTrek.walkedMilesUser(activityData, userData, 1, "06/05/2019")).to.equal(6.56)
   })
@@ -19,6 +19,22 @@ describe('userActivity', function() {
   it('should return minutes active for a user on a given date', function() {
     const userTrek = new userActivity(userData, 1);
     expect(userTrek.activeMinutesUser(activityData, 1, "15/05/2019")).to.equal(228)
+  })
+
+  it('should return an object that includes a week of date and minute values', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.createWeekObject(activityData, 1, "15/05/2019")).to.deep.equal({ '09/05/2019': 126,
+    '10/05/2019': 220,
+    '11/05/2019': 294,
+    '12/05/2019': 97,
+    '13/05/2019': 274,
+    '14/05/2019': 142,
+    '15/05/2019': 228 });
+  })
+
+  it('should return the average minutes active for a user over a given week', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.avgActiveMinutes(userTrek.createWeekObject(activityData, 1, "15/05/2019"))).to.equal(197)
   })
 
   it('should determine if a user reached their step goal on a given date', function() {
