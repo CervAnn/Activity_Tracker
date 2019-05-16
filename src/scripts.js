@@ -45,7 +45,7 @@ $(document).ready(() => {
     $('menu').toggleClass('side-main grid-main');
     $('.box2, .box3, .box4').toggleClass('hidden');
     $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3><p>${user.compareStepGoal(userData)}</p>
-      <p>You have walked ${userAct.getStepsOfDay(activityData, id, today)} steps today which, based on your stride length, amounts to ${userAct.walkedMilesUser(activityData, userData, id, today)} miles..</p>
+      <p>You have walked ${userAct.getStepsOfDay(activityData, id, today)} steps today which, based on your stride length, amounts to ${userAct.walkedMilesUser(activityData, userData, id, today)} miles.</p>
       <p>Your all time walking record is ${userAct.findStepRecord(activityData, id)} steps in a day.</p>
       ${userAct.compareSteps(activityData, id, today)}`);
   });
