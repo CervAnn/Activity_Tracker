@@ -3,6 +3,7 @@ $(document).ready(() => {
   const user = new User(userData, id);
   const userHydro = new userHydration(userData, id)
   const userZs = new userSleep(userData, id)
+  const userAct = new userActivity(userData, id);
   var today = new Date();
   const dd = today.getDate();
   const mm = today.getMonth() + 1;
@@ -28,7 +29,10 @@ $(document).ready(() => {
     $('.info-card').toggleClass('hidden yellow info-card-stretch');
     $('menu').toggleClass('side-main grid-main');
     $('.box2, .box3, .box4').toggleClass('hidden');
-    $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3><p>${user.compareStepGoal(userData)}</p>`);
+    $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3><p>${user.compareStepGoal(userData)}</p>
+      <p>You have walked ${userAct.getStepsOfDay(activityData, id, today)} steps today which, based on your stride length, amounts to ${userAct.walkedMilesUser(activityData, userData, id, today)} miles..</p>
+      <p>Your all time walking record is ${userAct.findStepRecord(activityData, id)} steps in a day.</p>
+      <p>${userAct.compareSteps(activityData, id, today)}</p>`);
   });
 
   $('.box2').click(function() {
@@ -57,7 +61,10 @@ $(document).ready(() => {
     $('.info-card').toggleClass('hidden rose info-card-stretch');
     $('menu').toggleClass('side-main grid-main');
     $('.box1, .box2, .box3').toggleClass('hidden');
-    $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>`);
+    $('.info-card').html(`<h3>Hello ${user.returnFirstName()}!</h3>
+      <p>You have been active for ${userAct.activeMinutesUser(activityData, id, today)} minutes today.</p>
+      <p>${userAct.compareStairs(activityData, id, today)}</p>
+      <p>${userAct.compareMinutes(activityData, id, today)}</p>`);
   })
 
 })

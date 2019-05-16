@@ -14,7 +14,7 @@ class userActivity {
     activeMinutesUser(dataForActivity, id, date) {
         let dateOfMinutesActive = dataForActivity[id - 1].activityData
         .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
-        return dateOfMinutesActive.minutesActive
+        return dateOfMinutesActive.minutesActive;
     }
 
     determineIfReachedStepGoalForDay(data, id, date) {
@@ -80,6 +80,45 @@ class userActivity {
     findStepRecord(data, id) {
         let stepRecords = data[id - 1].activityData.map(obj => obj.numSteps);
         return Math.max(...stepRecords);
+    }
+
+    getStepsOfDay(data, id, date) {
+        const stepObject = data[id - 1].activityData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        return stepObject.numSteps;
+    }
+
+    getStairsOfDay(data, id, date) {
+        const stairObject = data[id - 1].activityData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        return stairObject.flightsOfStairs;
+    }
+
+    getMinutesOfDay(data, id, date) {
+        const minuteObject = data[id - 1].activityData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        return minuteObject.minutesActive;
+    }
+
+    compareSteps(data, id, date) {
+        if (this.getStepsOfDay(data, id, date) > this.findAverageStepsForDate(data, date)) {
+            return `You walked ${this.getStepsOfDay(data, id, date) - this.findAverageStepsForDate(data, date)} more steps than the average user today.`
+        } else {
+            return `You walked ${this.findAverageStepsForDate(data, date) - this.getStepsOfDay(data, id, date)} less steps than the average user today.`
+        }
+    }
+
+    compareStairs(data, id, date) {
+        if (this.getStairsOfDay(data, id, date) > this.findAverageStairsForDate(data, date)) {
+            return `You walked up ${this.getStairsOfDay(data, id, date) - this.findAverageStairsForDate(data, date)} more stairs than the average user today.`
+        } else {
+            return `You walked up ${this.findAverageStairsForDate(data, date) - this.getStairsOfDay(data, id, date)} less stairs than the average user today.`
+        }
+    }
+
+    compareMinutes(data, id, date) {
+        if (this.getMinutesOfDay(data, id, date) > this.findAverageMinutesForDate(data, date)) {
+            return `You spent ${this.getMinutesOfDay(data, id, date) - this.findAverageMinutesForDate(data, date)} more minutes active than the average user today.`
+        } else {
+            return `You spent ${this.findAverageMinutesForDate(data, date) - this.getMinutesOfDay(data, id, date)} less minutes active than the average user today.`
+        }
     }
 }
 
