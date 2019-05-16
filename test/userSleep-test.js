@@ -47,13 +47,13 @@ describe('userSleep', function() {
     const userZs = new userSleep(userData, 1);
     userZs.parseSleepOfWeek(userZs.getSleepOfWeek(sleepData, 1, "13/05/2019"))
     expect(userZs.getSleepQualityOfWeek(sleepData, 1, "13/05/2019")).to.deep.equal({ 
-    '06/05/2019': 4.8,
     '07/05/2019': 4.8,
     '08/05/2019': 1.9,
     '09/05/2019': 3.4,
     '10/05/2019': 4.3,
     '11/05/2019': 3.5,
-    '12/05/2019': 1.7 });
+    '12/05/2019': 1.7,
+    "13/05/2019": 3.2 });
   })
 
   it('should return quality of sleep throughout a week given a date', function() {
@@ -63,7 +63,7 @@ describe('userSleep', function() {
 
   it('should return people who sleep good', function() {
     const userZs = new userSleep(userData, 1);
-    expect(userZs.getPeopleWhoSleepGood(sleepData, "13/05/2019")).to.deep.equal([1, 2, 4])
+    expect(userZs.getPeopleWhoSleepGood(sleepData, "13/05/2019")).to.deep.equal([1, 2, 4, 5])
   })
 
   it('should return people who sleep long', function() {
