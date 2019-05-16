@@ -16,6 +16,15 @@ class userActivity {
         .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         return dateOfMinutesActive.minutesActive
     }
+
+    determineIfReachedStepGoalForDay(data, id, date) {
+        let dayOfActivity = data[id -1].activityData.find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
+        if (dayOfActivity.numSteps >= this.userData.dailyStepGoal) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 if (typeof module != 'undefined' && typeof module.exports != 'undefined') {

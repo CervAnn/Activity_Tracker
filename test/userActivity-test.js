@@ -21,4 +21,8 @@ describe('userActivity', function() {
     expect(userTrek.activeMinutesUser(activityData, 1, "15/05/2019")).to.deep.equal(228)
   })
 
+  it('should determine if a user reached their step goal on a given date', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.determineIfReachedStepGoalForDay(activityData, 1, "15/05/2019")).to.deep.equal(true)
+  })
 });
