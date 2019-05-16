@@ -108,4 +108,34 @@ describe('userActivity', function() {
     const userTrek = new userActivity(userData, 1);
     expect(userTrek.findStepRecord(activityData, 1)).to.equal(14811)
   })
+
+   it('should return steps given date', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.getStepsOfDay(activityData, 1, "15/05/2019")).to.equal(12224)
+  })
+
+    it('should return steps given date', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.getStairsOfDay(activityData, 1, "15/05/2019")).to.equal(32)
+  })
+
+     it('should return steps given date', function() {
+    const userTrek = new userActivity(userData, 1);
+    expect(userTrek.getMinutesOfDay(activityData, 1, "15/05/2019")).to.equal(228)
+  })
+
+     it('should compare a user\'s steps to the average user for a given day', function() {
+      const userTrek = new userActivity(userData, 1);
+      expect(userTrek.compareSteps(activityData, 1, "15/05/2019")).to.equal('You walked 2767 more steps than the average user today.')
+     })
+
+     it('should compare a user\'s flights of stairs walked to the average user for a given day', function() {
+      const userTrek = new userActivity(userData, 1);
+      expect(userTrek.compareStairs(activityData, 1, "15/05/2019")).to.equal('You walked up 7 more stairs than the average user today.')
+     })
+
+     it('should compare a user\'s minutes of activity to the average user for a given day', function() {
+      const userTrek = new userActivity(userData, 1);
+      expect(userTrek.compareMinutes(activityData, 1, "15/05/2019")).to.equal('You spent 90 more minutes active than the average user today.')
+     })
 });
