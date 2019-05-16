@@ -11,10 +11,32 @@ class userActivity {
         return parseFloat(totalMiles.toFixed(2))
     }
 
-    activeMinutesUser(dataForActivity, id, date) {
-        let dateOfMinutesActive = dataForActivity[id - 1].activityData
+    activeMinutesUser(data, id, date) {
+        let dateOfMinutesActive = data[id - 1].activityData
         .find(obj => parseInt(obj.date.split('/')) === parseInt(date.split('/')));
         return dateOfMinutesActive.minutesActive
+    }
+
+    createWeekObject(data, id, date) {
+        let dataForActivity = data[id - 1].activityData;
+        let day = dataForActivity.find(obj => obj.date === date);
+        let week = dataForActivity.reduce((acc, obj, index, array) => {
+            const indexOfDay = array.indexOf(day);
+            const fullWeek = dataForActivity.slice((indexOfDay - 6), (indexOfDay + 1))
+            const activityWeekObject = fullWeek.reduce((acc, obj, index, array) => {
+            acc[obj.date] = obj.minutesActive;
+            return acc;
+            }, {})
+            return activityWeekObject;
+        }, {})
+        return week;
+    }
+
+    avgActiveMinutes(weekObject) {
+        let activeMins = Object.values(weekObject).reduce((acc, minutes) => {
+            return acc + minutes
+        }, 0)
+        return parseInt(Math.floor(activeMins / 7));
     }
 
     determineIfReachedStepGoalForDay(data, id, date) {
@@ -59,7 +81,6 @@ class userActivity {
             acc += obj.minutesActive;
             return acc;
         }, 0);
-        // console.log(parseInt((totalMinutes / flatMinutes.length)))
         return parseInt((totalMinutes / flatMinutes.length));
     }
 
@@ -73,7 +94,6 @@ class userActivity {
             acc += obj.numSteps;
             return acc;
         }, 0);
-        // console.log(parseInt((totalMinutes / flatSteps.length)))
         return parseInt((totalMinutes / flatSteps.length));
     }
 
